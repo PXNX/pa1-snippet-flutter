@@ -24,10 +24,16 @@ class MyApp extends StatelessWidget {
 class MyHelloWorld extends StatelessWidget {
   const MyHelloWorld({Key? key, required this.someText}) : super(key: key);
 
-  final String someText;
+  final String? someText;
 
   @override
-  Widget build(BuildContext context) => Text(someText);
+  Widget build(BuildContext context) {
+    if (someText == null) {
+      return const Text("someText is null.");
+    } else {
+      return Text(someText!);
+    }
+  }
 }
 
 class MyGreeting extends StatefulWidget {
@@ -39,7 +45,7 @@ class MyGreeting extends StatefulWidget {
 
 class _MyGreetingState extends State<MyGreeting> {
   var names = ["Amir", "Bob", "Carol", "Demeter", "Erebos", "Felix"];
-  String _greeting ="No greeting yet :(";
+  String _greeting = "No greeting yet :(";
 
   void _greetSomeone() {
     setState(() {
